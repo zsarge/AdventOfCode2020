@@ -9,17 +9,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-/*
-general structure:
-
-function testLine(string) return int
-readfilebylines(file) {
-    for each line
-        count += testline(line)
-    return count
-}
-*/
-
 int charToInt(char c)
 {
     return c - '0';
