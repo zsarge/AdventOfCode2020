@@ -20,29 +20,61 @@ readfilebylines(file) {
 }
 */
 
-int charToInt(char c) {
+int charToInt(char c)
+{
     return c - '0';
+}
+
+int strToInt(char *str)
+{
+    printf("Str: ");
+    for (size_t i = 0; i < strlen(str); i++)
+    {
+        printf("%c", str[i]);
+    }
+
+    printf("\n");
+    return 1;
+    // int length = strlen(str);
+    // printf("String %s", str);
+    // printf(" - length %d\n", length);
+    // unsigned int result = 0;
+    // if (length <= 0)
+    //     return NULL;
+    // if (length == 1)
+    //     return charToInt(*str);
+    // for (int i = 0; i < length; i++)
+    // {
+    //     result += charToInt(str[i]);
+    //     result *= 10;
+    // }
+    // result /= 10;
+    // return result;
 }
 
 // Checks the validity of a line
 // for reference, lines take the form
 // 17-19 b: bbbbbbbbbbbbbbbbbbq
 // More info is on the website.
-int checkLine(char *line) {
+int checkLine(char *line)
+{
     char firstBound[10];
     char secondBound[10];
     size_t pos = 0; // line position
-    size_t secondPos = 0; 
+    size_t secondPos = 0;
 
     char charToCheck;
     char lineToCheck[100];
 
-    while (line[pos] != '-')
+    do
     {
         firstBound[pos] = line[pos];
         pos++;
-    }
-    printf("first: \t%s\n", firstBound);
+    } while (line[pos] != '-');
+    printf("first bound: %c", line[pos]);
+    printf("at index %d\n", pos);
+
+    printf("first: \t%d\n", strToInt(firstBound));
     pos++;
     while (line[pos] != ' ')
     {
@@ -50,10 +82,12 @@ int checkLine(char *line) {
         secondPos++;
         pos++;
     }
+    printf("second bound: %c", line[pos]);
+    printf("at index %d\n", pos);
     // 17-19 b: bbbbbbbbbbbbbbbbbbq
     pos++;
     charToCheck = line[pos];
-    printf("snd: \t%s\n", secondBound);
+    printf("snd: \t%d\n", strToInt(secondBound));
     printf("char: \t%c\n", charToCheck);
 
     pos += 3;
