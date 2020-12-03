@@ -65,7 +65,7 @@ int parseLine(char *line)
     int secondBoundStart;
     int secondBoundEnd;
 
-    size_t pos = 0; // line position
+    size_t pos = 0; // position in line 
 
     char charToCheck;
     char lineToCheck[258];
@@ -81,16 +81,22 @@ int parseLine(char *line)
     // Skip the deliminator
     pos++;
 
+    // get the second number, which is the maximum number of times the 
+    // char should appear in the password
     secondBoundStart = pos;
     while (line[pos] != ' ')
     {
         pos++;
     }
     secondBoundEnd = pos;
-    pos++;
+
+    pos++; // Skip the space
+
     charToCheck = line[pos];
 
-    pos += 3;
+    pos += 3; // Skip the character, the colon, and the space
+
+    // parse the rest of the line into another string to work with
     int i = 0;
     for (; pos < strlen(line); pos++)
     {
