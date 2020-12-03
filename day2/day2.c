@@ -25,31 +25,21 @@ int charToInt(char c)
     return c - '0';
 }
 
-int strToInt(char *str)
+// stop is non-inclusive
+int strToInt(int start, int stop, char *line)
 {
-    printf("Str: ");
-    for (size_t i = 0; i < strlen(str); i++)
-    {
-        printf("%c", str[i]);
+    int result = 0;
+    if ((start + 1) == stop) {
+        return charToInt(line[start]);
     }
 
-    printf("\n");
-    return 1;
-    // int length = strlen(str);
-    // printf("String %s", str);
-    // printf(" - length %d\n", length);
-    // unsigned int result = 0;
-    // if (length <= 0)
-    //     return NULL;
-    // if (length == 1)
-    //     return charToInt(*str);
-    // for (int i = 0; i < length; i++)
-    // {
-    //     result += charToInt(str[i]);
-    //     result *= 10;
-    // }
-    // result /= 10;
-    // return result;
+    for (size_t i = start; i < stop; i++)
+    {
+        result += charToInt(line[i]);
+        result *= 10;
+    }
+    result /= 10;
+    return result;
 }
 
 // Checks the validity of a line
@@ -58,47 +48,47 @@ int strToInt(char *str)
 // More info is on the website.
 int checkLine(char *line)
 {
-    char firstBound[10];
-    char secondBound[10];
+    printf("%s", line);
+    int firstBoundStart = 0;
+    int firstBoundEnd;
+    int secondBoundStart;
+    int secondBoundEnd;
     size_t pos = 0; // line position
-    size_t secondPos = 0;
 
     char charToCheck;
-    char lineToCheck[100];
+    char lineToCheck[258];
 
     do
     {
-        firstBound[pos] = line[pos];
         pos++;
     } while (line[pos] != '-');
-    printf("first bound: %c", line[pos]);
-    printf("at index %d\n", pos);
+    firstBoundEnd = pos;
 
-    printf("first: \t%d\n", strToInt(firstBound));
     pos++;
+
+    secondBoundStart = pos;
     while (line[pos] != ' ')
     {
-        secondBound[secondPos] = line[pos];
-        secondPos++;
         pos++;
     }
-    printf("second bound: %c", line[pos]);
-    printf("at index %d\n", pos);
-    // 17-19 b: bbbbbbbbbbbbbbbbbbq
+    secondBoundEnd = pos;
     pos++;
     charToCheck = line[pos];
-    printf("snd: \t%d\n", strToInt(secondBound));
-    printf("char: \t%c\n", charToCheck);
 
     pos += 3;
-    secondPos = 0;
+    int i = 0;
     for (; pos < strlen(line); pos++)
     {
-        lineToCheck[secondPos] = line[pos];
-        secondPos++;
+        lineToCheck[i] = line[pos];
+        i++;
     }
-    lineToCheck[secondPos] = '\0';
+    lineToCheck[i] = '\0';
 
+    int firstBound = strToInt(firstBoundStart, firstBoundEnd, line);
+    int secondBound = strToInt(secondBoundStart, secondBoundEnd, line);
+    printf("1 to int: \t%d\n", firstBound);
+    printf("2 to int: \t%d\n", secondBound);
+    printf("char: \t%c\n", charToCheck);
     printf("Line: \t%s\n", lineToCheck);
     printf("\n");
 
