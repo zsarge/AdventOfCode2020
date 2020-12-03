@@ -29,7 +29,8 @@ int charToInt(char c)
 int strToInt(int start, int stop, char *line)
 {
     int result = 0;
-    if ((start + 1) == stop) {
+    if ((start + 1) == stop)
+    {
         return charToInt(line[start]);
     }
 
@@ -42,28 +43,42 @@ int strToInt(int start, int stop, char *line)
     return result;
 }
 
+int checkPassword(int min, int max, char charToCheck, char *password)
+{
+    size_t count = 0;
+    for (size_t i = 0; i < strlen(password); i++)
+    {
+        if (password[i] == charToCheck)
+            count++;
+    }
+    return (count >= min && count <= max);
+}
+
 // Checks the validity of a line
 // for reference, lines take the form
 // 17-19 b: bbbbbbbbbbbbbbbbbbq
 // More info is on the website.
-int checkLine(char *line)
+int parseLine(char *line)
 {
-    printf("%s", line);
     int firstBoundStart = 0;
     int firstBoundEnd;
     int secondBoundStart;
     int secondBoundEnd;
+
     size_t pos = 0; // line position
 
     char charToCheck;
     char lineToCheck[258];
 
+    // get the first number, which is the minumum number of times the 
+    // char should appear in the password.
     do
     {
         pos++;
     } while (line[pos] != '-');
     firstBoundEnd = pos;
 
+    // Skip the deliminator
     pos++;
 
     secondBoundStart = pos;
@@ -84,21 +99,16 @@ int checkLine(char *line)
     }
     lineToCheck[i] = '\0';
 
-    int firstBound = strToInt(firstBoundStart, firstBoundEnd, line);
-    int secondBound = strToInt(secondBoundStart, secondBoundEnd, line);
-    printf("1 to int: \t%d\n", firstBound);
-    printf("2 to int: \t%d\n", secondBound);
-    printf("char: \t%c\n", charToCheck);
-    printf("Line: \t%s\n", lineToCheck);
-    printf("\n");
+    int min = strToInt(firstBoundStart, firstBoundEnd, line);
+    int max = strToInt(secondBoundStart, secondBoundEnd, line);
 
-    return 1;
+    return checkPassword(min, max, charToCheck, lineToCheck);
 }
 
 // returns the number of valid passwords in file
 int countValidPasswordsInFile(char *fileName)
 {
-    unsigned int count = 0;
+    size_t count = 0;
     FILE *file = fopen(fileName, "r");
     char line[256];
 
@@ -110,7 +120,7 @@ int countValidPasswordsInFile(char *fileName)
     // read file line by line
     while (fgets(line, sizeof(line), file))
     {
-        count += checkLine(line);
+        count += parseLine(line);
     }
     fclose(file);
 
@@ -119,10 +129,10 @@ int countValidPasswordsInFile(char *fileName)
 
 int main()
 {
-    unsigned count;
+    size_t count;
 
     count = countValidPasswordsInFile("./input.txt");
-    printf("%d\n", count);
-    // printf("%s\n", readFile("./input.txt"));
+    printf("%ld\n", count);
+
     return 0;
 }
