@@ -1,9 +1,7 @@
 import re
 
 f = open("input.txt", "r")
-# f = open("test_input.txt", "r")
 input = f.read()
-# print(input)
 input = input.split("\n\n")
 input = map(lambda str: str.replace("\n", " "), input)
 
@@ -79,44 +77,22 @@ required_fields = [
 total = 0
 for passport in input:
     passport_fields = passport.split(" ")
-    print(f"\n{passport}")
 
     valid_fields = []
     for field in passport_fields:
         tag = field[:3]
-        print(f"Tag: {tag} - Content: {field[4:]}\t- {valid_field(tag, field[4:])}")
         valid_fields.append(valid_field(tag, field[4:]))
             
-    print()
     unique_fields = []
     for field in required_fields:
         result = False
         if passport.count(field) == 1:
             result = True 
         unique_fields.append(result)
-        print(f"{field} in passport - {result}")
-    print()
 
     # decrement to account for cid
-    # if (unique_fields >= (len(all_fields) - 1)) and (valid_fields >= (len(all_fields) - 1)):
-    # if (False not in unique_fields) and (False not in valid_fields):
     if False not in valid_fields and False not in unique_fields:
-        print("Entry marked as valid")
         total += 1
-    else:
-        print("NOT VALID")
-        print(f"False not in unique_fields: {False not in unique_fields} - False not in valid_fields: {False not in valid_fields}")
-    print("\n------")
     
-print()
-print("total")
+print("Valid passports:")
 print(total)
-if total >= 182 or total <= 19 or total == 49 or total == 108 or total == 145:
-    print("WRONG ANSWER")
-
-# 190 is too high
-# 182 is too high
-# 108 is also wrong
-# 145 is also wrong
-#  49 is also wrong
-#  19 is too low

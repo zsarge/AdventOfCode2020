@@ -1,6 +1,5 @@
 f = open("input.txt", "r")
 input = f.read()
-# print(input)
 input = input.split("\n\n")
 input = map(lambda str: str.replace("\n", ""), input)
 
@@ -24,4 +23,6 @@ def check_passport(passport):
 total = 0
 for passport in input:
     total += check_passport(passport)
+
+print("Valid passports:")
 print(total)
