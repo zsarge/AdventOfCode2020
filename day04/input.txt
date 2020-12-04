@@ -954,4 +954,4 @@ byr:1968 iyr:2017 pid:044109096
 hcl:#d257c7 eyr:2036
 iyr:2018
 ecl:#5b11eb
-byr:1950
+byr:1950s

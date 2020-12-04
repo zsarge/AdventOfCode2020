@@ -12,7 +12,7 @@ required_fields = [
     "hcl",
     "ecl",
     "pid",
-    # "cid",
+    "cid",
 ]
 
 def check_passport(passport):
