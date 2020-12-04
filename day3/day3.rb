@@ -2,10 +2,13 @@
 # https://adventofcode.com/2020/day/3
 # using ruby 2.5.1
 # by Zack Sargent
+#
+# This was my object oriented approach.
+
 require_relative "input"
 
 class Map
-  # Asssume we are on a repeating plane
+  # Asssume we are on a horizontally repeating plane
   def self.getCharAt(x, y)
     height = Input.variable.length()
     if y >= height
@@ -13,9 +16,9 @@ class Map
     end
 
     width = Input.variable[y].length
-    if x <= width
+    if x < width
       return Input.variable[y][x]
-    elsif x > width # recursively find location on map
+    elsif x >= width # recursively find location on map
       x %= width
       return self.getCharAt(x, y)
     else
@@ -50,8 +53,21 @@ class Toboggan
     }
     return count
   end
+
+  def self.getTreesAtSlope(xSlope, ySlope)
+    return self.countTrees(self.travelAtSlope(xSlope, ySlope))
+  end
 end
 
-# puts Input.variable
+puts "Day 3, Part 1"
+puts Toboggan.getTreesAtSlope(3, 1)
+puts ""
 
-puts Toboggan.countTrees(Toboggan.travelAtSlope(3, 1))
+total = 1
+total *= Toboggan.getTreesAtSlope(1, 1)
+total *= Toboggan.getTreesAtSlope(3, 1)
+total *= Toboggan.getTreesAtSlope(5, 1)
+total *= Toboggan.getTreesAtSlope(7, 1)
+total *= Toboggan.getTreesAtSlope(1, 2)
+puts "Day 3, Part 2"
+puts total
