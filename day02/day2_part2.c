@@ -33,6 +33,10 @@ int strToInt(int start, int stop, char *line)
 }
 
 /* --- This is the only function that changes between part 1 and part 2 --- */
+// Checks the validity of a line
+// for reference, lines take the form
+// 17-19 b: bbbbbbbbbbbbbbbbbbq
+// More info is on the website.
 int checkPassword(int pos1, int pos2, char charToCheck, char *password)
 {
     // decrement pos1 and pos2 to use zero index, 
@@ -42,10 +46,7 @@ int checkPassword(int pos1, int pos2, char charToCheck, char *password)
 }
 /* ------------------------------------------------------------------------ */
 
-// Checks the validity of a line
-// for reference, lines take the form
-// 17-19 b: bbbbbbbbbbbbbbbbbbq
-// More info is on the website.
+// Parses a line and returns checkPassword
 int parseLine(char *line)
 {
     int firstBoundStart = 0;
@@ -99,7 +100,6 @@ int parseLine(char *line)
     return checkPassword(min, max, charToCheck, lineToCheck);
 }
 
-// returns the number of valid passwords in file
 int countValidPasswordsInFile(char *fileName)
 {
     size_t count = 0;

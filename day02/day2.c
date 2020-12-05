@@ -32,6 +32,10 @@ int strToInt(int start, int stop, char *line)
     return result;
 }
 
+// Checks the validity of a line
+// for reference, lines take the form
+// 17-19 b: bbbbbbbbbbbbbbbbbbq
+// More info is on the website.
 int checkPassword(int min, int max, char charToCheck, char *password)
 {
     size_t count = 0;
@@ -43,10 +47,7 @@ int checkPassword(int min, int max, char charToCheck, char *password)
     return (count >= min && count <= max);
 }
 
-// Checks the validity of a line
-// for reference, lines take the form
-// 17-19 b: bbbbbbbbbbbbbbbbbbq
-// More info is on the website.
+// Parses a line and returns checkPassword
 int parseLine(char *line)
 {
     int firstBoundStart = 0;
@@ -100,7 +101,6 @@ int parseLine(char *line)
     return checkPassword(min, max, charToCheck, lineToCheck);
 }
 
-// returns the number of valid passwords in file
 int countValidPasswordsInFile(char *fileName)
 {
     size_t count = 0;
@@ -127,6 +127,7 @@ int main()
     size_t count;
 
     count = countValidPasswordsInFile("./input.txt");
+    printf("Part 1:\n");
     printf("%ld\n", count);
 
     return 0;
