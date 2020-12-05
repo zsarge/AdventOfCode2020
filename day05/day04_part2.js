@@ -69,13 +69,13 @@ allSeatIDs.sort(function (a, b) {
 
 function getYourID() {
 	let lastValue = 0;
-	var yourID = 0
+	var yourID = 0;
 	Object.values(allSeatIDs).forEach((key) => {
-		key = parseInt(key)
+		key = parseInt(key);
 		if (key - lastValue > 1) yourID = key;
 		lastValue = key;
 	});
-	return (yourID - 1)
+	return yourID - 1;
 }
 
 console.log(getYourID());
