@@ -1,5 +1,5 @@
 /* 
- * advent of code, day 2
+ * advent of code, day 2, part 2
  * https://adventofcode.com/2020/day/2
  * using C, built with GNU Make 4.1
  * by Zack Sargent
@@ -32,11 +32,15 @@ int strToInt(int start, int stop, char *line)
     return result;
 }
 
+/* --- This is the only function that changes between part 1 and part 2 --- */
 int checkPassword(int pos1, int pos2, char charToCheck, char *password)
 {
-    // decrement pos1 and pos2 to use zero index, and apply Logical exclusive or:
-    return (!(password[pos1 - 1] == charToCheck) != !(password[pos2 - 1] == charToCheck));
+    // decrement pos1 and pos2 to use zero index, 
+    // and apply Logical exclusive or:
+    return (!(password[pos1 - 1] == charToCheck) != 
+            !(password[pos2 - 1] == charToCheck));
 }
+/* ------------------------------------------------------------------------ */
 
 // Checks the validity of a line
 // for reference, lines take the form
@@ -65,7 +69,7 @@ int parseLine(char *line)
     // Skip the deliminator
     pos++;
 
-    // get the first number, which is the second pos
+    // get the second number, which is the second pos
     // the char should appear at
     secondBoundStart = pos;
     while (line[pos] != ' ')
