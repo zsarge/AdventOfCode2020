@@ -1,3 +1,13 @@
+/* Advent of Code: day 5, parts 1 and 2
+ * https://adventofcode.com/2020/day/5
+ * using go
+ * by Zack Sargent
+ *
+ * I originally tried to do this when the challenge opened at midnight.
+ * Apparently, I don't write good code when sleep deprived, so this is
+ * an improved version.
+ */
+
 package main
 
 import (
@@ -5,6 +15,7 @@ import (
 	"io/ioutil"
 	"log"
 	"math"
+	"sort"
 	"strings"
 )
 
@@ -58,7 +69,7 @@ func max(numbers []int) int {
 	return max
 }
 
-func part1(input []uint8) {
+func part1(input []uint8) []int {
 	var seatIds []int
 
 	// get the id for every pattern given
@@ -69,6 +80,23 @@ func part1(input []uint8) {
 	// get the max of those seat ids
 	fmt.Println("Part 1: ")
 	fmt.Println(max(seatIds))
+
+	return seatIds
+}
+
+func part2(seatIds []int) int {
+	sort.Ints(seatIds)
+	lastValue := seatIds[0]
+
+	// find the seat that is skipped
+	for _, seat := range seatIds {
+		if seat-lastValue > 1 {
+			return (seat - 1)
+		}
+		lastValue = seat
+	}
+
+	return -1
 }
 
 func main() {
@@ -78,5 +106,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	part1(input)
+	seatIds := part1(input)
+
+	fmt.Println("Part 2: ")
+	fmt.Println(part2(seatIds))
 }
