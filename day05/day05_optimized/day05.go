@@ -19,6 +19,17 @@ import (
 	"strings"
 )
 
+// For takeUppper and takeLower, know that low and 
+// high are the bounds of the range to use. 
+// 
+// Starting from 0 to 127, applying takeLower would 
+// keep the range 0 through 63. Subsequently applying 
+// takeUpper would keep 32 through 63.
+// 
+// These functions are applied by the seat pattern until
+// the bounds converge on a single number. This number
+// is stored as the low bound in the code.
+
 func takeUpper(low int, high int) (int, int) {
 	if high-low == 1 {
 		low = high
