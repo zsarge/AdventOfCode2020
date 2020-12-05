@@ -25,5 +25,9 @@ I am trying to do each day in a different programming language, but I don't have
 
 ---
 
+Out of all my solutions, I am most happy with Day 2, and Day 5 (optimized).
+
+---
+
 My friend Kevin is also doing Advent of Code, all in Javascript.
 You can check out his solutions **[here](https://github.com/kevinuulong/aoc-2020)**
