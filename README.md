@@ -1,10 +1,14 @@
 # [Advent Of Code (2020)](https://adventofcode.com/2020/)
+[![MIT License](https://img.shields.io/github/license/zsarge/AdventOfCode2020?style=flat-square)](https://github.com/zsarge/AdventOfCode2020/blob/main/LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/zsarge/AdventOfCode2020?style=flat-square)](https://github.com/zsarge/AdventOfCode2020/graphs/commit-activity)
+[![Languages Used](https://img.shields.io/github/languages/count/zsarge/AdventOfCode2020?style=flat-square)](https://github.com/zsarge/AdventOfCode2020/commits/main)
+[![Language Percentage](https://img.shields.io/github/languages/top/zsarge/AdventOfCode2020?style=flat-square)](https://github.com/zsarge/AdventOfCode2020/commits/main)
 
 > Advent of Code is an Advent calendar of small programming puzzles
 > for a variety of skill sets and skill levels that can be solved in
 > any programming language you like. [[source]](https://adventofcode.com/2020/about)
 
-I am doing AdventOfCode as a fun exercise in programming, not to get a high score.
+I am a high schooler doing AdventOfCode as a fun exercise in programming, not a professional attempting to get a high score.
 
 I am trying to do each day in a different programming language, but I don't have much of a real plan.
 
