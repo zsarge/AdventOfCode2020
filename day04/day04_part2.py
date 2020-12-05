@@ -60,7 +60,6 @@ all_fields = {
     "cid": valid_cid
 }
 
-# all_fields[tag](field[4:])
 def valid_field(name: str, content: str) -> bool:
     return all_fields[name](content)
 
@@ -90,7 +89,6 @@ for passport in input:
             result = True 
         unique_fields.append(result)
 
-    # decrement to account for cid
     if False not in valid_fields and False not in unique_fields:
         total += 1
     
