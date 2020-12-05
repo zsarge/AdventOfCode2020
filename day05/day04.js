@@ -44,7 +44,6 @@ function getRowAndColumn(string) {
 		} else if (char == "R") {
 			takeUpper(columns);
 		}
-		console.log(`seats ${seats}\ncolumns ${columns}`);
 	});
 	if (columns.length > 1) takeUpper(columns);
 	if (columns.length > 1) throw "error";
@@ -60,4 +59,5 @@ var maxSeatID = [];
 input.forEach((pattern) => {
 	maxSeatID.push(getSeatID(getRowAndColumn(pattern)));
 });
+
 console.log(Math.max(...maxSeatID));

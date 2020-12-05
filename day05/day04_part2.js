@@ -45,9 +45,6 @@ function getRowAndColumn(string) {
 			takeUpper(columns);
 		}
 	});
-	if (columns.length > 1) takeUpper(columns);
-	if (columns.length > 1) throw "error";
-	if (seats.length > 1) throw "error";
 	return [seats[0], columns[0]];
 }
 
@@ -55,16 +52,13 @@ function getSeatID(array) {
 	return array[0] * 8 + array[1];
 }
 
-var allSeats = {};
+// _________________________________
+
 var allSeatIDs = [];
+
 input.forEach((pattern) => {
 	let rowAndColumn = getRowAndColumn(pattern);
 	let seatID = getSeatID(rowAndColumn);
-	allSeats[rowAndColumn[0]] = {
-		row: rowAndColumn[0],
-		column: rowAndColumn[1],
-		seatID: seatID,
-	};
 	allSeatIDs.push(seatID);
 });
 
