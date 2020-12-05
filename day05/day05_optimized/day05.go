@@ -54,10 +54,10 @@ func getSeatPosition(seat string) (int, int) {
 			rowLow, rowHigh = takeLower(rowLow, rowHigh)
 		} else if c == "B" {
 			rowLow, rowHigh = takeUpper(rowLow, rowHigh)
-		} else if c == "R" {
-			colLow, colHigh = takeUpper(colLow, colHigh)
 		} else if c == "L" {
 			colLow, colHigh = takeLower(colLow, colHigh)
+		} else if c == "R" {
+			colLow, colHigh = takeUpper(colLow, colHigh)
 		}
 	}
 
@@ -80,6 +80,7 @@ func max(numbers []int) int {
 	return max
 }
 
+// Part 1: Find the highest seat ID on a boarding pass.
 func part1(input []uint8) []int {
 	var seatIds []int
 
@@ -95,12 +96,16 @@ func part1(input []uint8) []int {
 	return seatIds
 }
 
+// Part 2: Find the ID of your seat.
+// (your seat being a seat that has an ID directly 
+// above and below it, but is not included in the 
+// list of other people's seats)
 func part2(seatIds []int) int {
 	sort.Ints(seatIds)
 	lastValue := seatIds[0]
 
-	// find the seat that is skipped
 	for _, seat := range seatIds {
+		// find the seat that is skipped
 		if seat-lastValue > 1 {
 			return (seat - 1)
 		}
