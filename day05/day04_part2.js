@@ -8,14 +8,14 @@ var seats = [];
 var columns = [];
 
 function generateSeats() {
-	seats = []
+	seats = [];
 	for (let i = 0; i < 127; i++) {
 		seats.push(i);
 	}
 }
 
 function generateColumns() {
-	columns = []
+	columns = [];
 	for (let i = 0; i < 8; i++) {
 		columns.push(i);
 	}
@@ -44,7 +44,6 @@ function getRowAndColumn(string) {
 		} else if (char == "R") {
 			takeUpper(columns);
 		}
-		console.log(`seats ${seats}\ncolumns ${columns}`);
 	});
 	if (columns.length > 1) takeUpper(columns);
 	if (columns.length > 1) throw "error";
@@ -56,8 +55,33 @@ function getSeatID(array) {
 	return array[0] * 8 + array[1];
 }
 
-var maxSeatID = [];
+var allSeats = {};
+var allSeatIDs = [];
 input.forEach((pattern) => {
-	maxSeatID.push(getSeatID(getRowAndColumn(pattern)));
+	let rowAndColumn = getRowAndColumn(pattern);
+	let seatID = getSeatID(rowAndColumn);
+	allSeats[rowAndColumn[0]] = {
+		row: rowAndColumn[0],
+		column: rowAndColumn[1],
+		seatID: seatID,
+	};
+	allSeatIDs.push(seatID);
 });
-console.log(Math.max(...maxSeatID));
+
+allSeatIDs.map((x) => parseInt(x));
+allSeatIDs.sort(function (a, b) {
+	return a - b;
+});
+
+function getYourID() {
+	let lastValue = 0;
+	var yourID = 0
+	Object.values(allSeatIDs).forEach((key) => {
+		key = parseInt(key)
+		if (key - lastValue > 1) yourID = key;
+		lastValue = key;
+	});
+	return (yourID - 1)
+}
+
+console.log(getYourID());
