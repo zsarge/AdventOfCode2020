@@ -1,6 +1,6 @@
 # [Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
 
-> [Go back to main repo](https://github.com/zsarge/AdventOfCode2020)
+> [Go back to main repo](https://github.com/zsarge/AdventOfCode2020#solution-overview)
 >
 > [View part 1 of the code](day2.c)
 >

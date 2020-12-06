@@ -1,6 +1,6 @@
 # [Day 4: Passport Processing](https://adventofcode.com/2020/day/4)
 
-> [Go back to main repo](https://github.com/zsarge/AdventOfCode2020)
+> [Go back to main repo](https://github.com/zsarge/AdventOfCode2020#solution-overview)
 >
 > [View part 1 of the code](day04.py)
 >

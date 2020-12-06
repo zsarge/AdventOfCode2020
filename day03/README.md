@@ -1,6 +1,6 @@
 # [Day 3: Toboggan Trajectory](https://adventofcode.com/2020/day/3)
 
-> [Go back to main repo](https://github.com/zsarge/AdventOfCode2020)
+> [Go back to main repo](https://github.com/zsarge/AdventOfCode2020#solution-overview)
 >
 > [View code](day3.rb)
 
