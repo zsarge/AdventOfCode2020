@@ -8,8 +8,7 @@
  * Note: this is my first time using PHP.
  */
 
-function getInput() 
-{
+function getInput() {
 	$filename = "input.txt";
 	// $filename = "test_input.txt";
 

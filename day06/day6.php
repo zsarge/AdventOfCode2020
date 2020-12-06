@@ -8,13 +8,11 @@
  * Note: this is my first time using PHP.
  */
 
-function replace($s) 
-{
+function replace($s) {
 	return str_replace("\n","", $s);
 }
 
-function getInput() 
-{
+function getInput() {
 	$filename = "input.txt";
 	// $filename = "test_input.txt";
 
@@ -30,8 +28,7 @@ function getInput()
 	return $formatted_array;
 }
 
-function getNumberOfQuestions($str) 
-{
+function getNumberOfQuestions($str) {
 	$letters = str_split($str);
 	$answered = array();
 
@@ -48,8 +45,7 @@ foreach ($input as $value) {
 	$total += getNumberOfQuestions($value);
 }
 
-echo "Total questions:\n";
+echo "Total questions anyone answered:\n";
 echo $total , "\n";
 
-// too high : 6533
 ?>
