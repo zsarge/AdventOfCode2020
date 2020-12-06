@@ -23,7 +23,7 @@ I am trying to do each day in a different programming language, but I don't have
 |       [4](https://adventofcode.com/2020/day/4)       |                [Pt 1](day04/day04.py), [Pt 2](day04/day04_part2.py)                | Python     |         [link](day04/README.md)         | This took me two hours because I had a typo in two characters.                          |
 | [5 (original)](https://adventofcode.com/2020/day/5)  | [Pt 1](day05/day05_original/day05.js), [Pt 2](day05/day05_original/day05_part2.js) | Javascript | [link](day05/day05_original/README.md)  | I tried to do this one from challenge open. I placed 8460 in part 1 and 8816 in part 2. |
 | [5 (optimized)](https://adventofcode.com/2020/day/5) |                    [Pts 1 & 2](day05/day05_optimized/day05.go)                     | Go         | [link](day05/day05_optimized/README.md) | After realizing how bad my original solution was, I improved it in Go.                  |
-|       [6](https://adventofcode.com/2020/day/6)       |                [Pt 1](day06/day6.php), [Pt 2](day06/day6_part2.php)                | PHP        |                                         | This is my first time using PHP. I thought I would hate it more, but it's alright.      |
+|       [6](https://adventofcode.com/2020/day/6)       |                [Pt 1](day06/day6.php), [Pt 2](day06/day6_part2.php)                | PHP        |         [link](day06/README.md)         | This is my first time using PHP. I thought I would hate it more, but it's alright.      |
 
 ---
 
