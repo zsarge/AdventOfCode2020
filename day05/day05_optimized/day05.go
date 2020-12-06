@@ -19,29 +19,31 @@ import (
 	"strings"
 )
 
-// For takeUppper and takeLower, know that low and 
-// high are the bounds of the range to use. 
-// 
-// Starting from 0 to 127, applying takeLower would 
-// keep the range 0 through 63. Subsequently applying 
-// takeUpper would keep 32 through 63.
-// 
-// These functions are applied by the seat pattern until
-// the bounds converge on a single number. This number
-// is stored as the low bound in the code.
+/*
+ * For takeUppper and takeLower, know that low and
+ * high are the bounds of the range to use.
+ *
+ * Starting from 0 to 127, applying takeLower would
+ * keep the range 0 through 63. Subsequently applying
+ * takeUpper would keep 32 through 63.
+ *
+ * These functions are applied by the seat pattern until
+ * the bounds converge on a single number. This number
+ * is stored as the low bound in the code.
+ */
 
-func takeUpper(low int, high int) (int, int) {
+func takeUpper(low int, high int) int {
 	if high-low == 1 {
 		low = high
-		return low, high
+		return low
 	}
 	low += int(math.Ceil(float64(high-low) / 2))
-	return low, high
+	return low
 }
 
-func takeLower(low int, high int) (int, int) {
+func takeLower(low int, high int) int {
 	high -= int(math.Ceil(float64(high-low) / 2))
-	return low, high
+	return high
 }
 
 func getSeatPosition(seat string) (int, int) {
@@ -49,15 +51,15 @@ func getSeatPosition(seat string) (int, int) {
 	colLow, colHigh := 0, 7
 
 	for _, r := range seat {
-		c := string(r)
-		if c == "F" {
-			rowLow, rowHigh = takeLower(rowLow, rowHigh)
-		} else if c == "B" {
-			rowLow, rowHigh = takeUpper(rowLow, rowHigh)
-		} else if c == "L" {
-			colLow, colHigh = takeLower(colLow, colHigh)
-		} else if c == "R" {
-			colLow, colHigh = takeUpper(colLow, colHigh)
+		char := string(r)
+		if char == "F" {
+			rowHigh = takeLower(rowLow, rowHigh)
+		} else if char == "B" {
+			rowLow = takeUpper(rowLow, rowHigh)
+		} else if char == "L" {
+			colHigh = takeLower(colLow, colHigh)
+		} else if char == "R" {
+			colLow = takeUpper(colLow, colHigh)
 		}
 	}
 
@@ -97,8 +99,8 @@ func part1(input []uint8) []int {
 }
 
 // Part 2: Find the ID of your seat.
-// (your seat being a seat that has an ID directly 
-// above and below it, but is not included in the 
+// (your seat being a seat that has an ID directly
+// above and below it, but is not included in the
 // list of other people's seats)
 func part2(seatIds []int) int {
 	sort.Ints(seatIds)
