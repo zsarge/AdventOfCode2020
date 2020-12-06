@@ -11,7 +11,6 @@ required_fields = [
     "hcl",
     "ecl",
     "pid",
-    "cid",
 ]
 
 def check_passport(passport):
@@ -25,4 +24,4 @@ for passport in input:
     total += check_passport(passport)
 
 print("Valid passports:")
-print(total)
+print(total) 

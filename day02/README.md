@@ -1,12 +1,14 @@
 # [Day 2: Password Philosophy](https://adventofcode.com/2020/day/2)
 
 > [Go back to main repo](https://github.com/zsarge/AdventOfCode2020)
+>
+> [View part 1 of the code](day2.c)
+>
+> [View part 2 of the code](day2_part2.c)
 
 This day was written in C.
 
-This should work with GNU Make 4.1
-
-gcc should also work instead of make.
+I used GNU Make 4.1, but gcc should also work.
 
 ## Installation:
 

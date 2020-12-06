@@ -1,11 +1,17 @@
 # [Day 1: Report Repair](https://adventofcode.com/2020/day/1)
 
 > [Go back to main repo](https://github.com/zsarge/AdventOfCode2020)
+>
+> [View part 1 of the code](day1.js)
+>
+> [View part 2 of the code](day1_part2.js)
 
 This day was written in Javascript.
 This should work with Node v8.10.0
 
-### [[Get Node]](https://nodejs.org/en/download/)
+Notably, instead of reading the file as an input, I just used a vim macro to format it as an array, and I loaded it directly. This might cause an issue if you want to change the input.
+
+## [[Get Node]](https://nodejs.org/en/download/)
 
 **To run day 1, part 1:**
 
