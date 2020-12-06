@@ -1,12 +1,12 @@
 # [Day 5: Binary Boarding](https://adventofcode.com/2020/day/5)
 
 > [Go back to main repo](https://github.com/zsarge/AdventOfCode2020#solution-overview)
-
+>
 > [View part 1 of the code](day05.js)
-
+>
 > [View part 2 of the code](day05_part2.js)
 
-This is the bad solution. [View the improved solution here](../day05_optimized/README.md)
+This is the bad solution. [View the improved solution here.](../day05_optimized/README.md) I attempted to see how I would fair if I attempted Advent of Code as the timed challenge it is intended as. The answer is that my brain does not work at midnight, and I make silly mistakes that cost me lots of time and effort. I don't intend to start another challenge at midnight, unless my sleep schedule changes radically.
 
 This day was solved with Javascript, in Node version 8.10.0 on Ubuntu. These instructions might not apply to you.
 
