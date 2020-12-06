@@ -4,6 +4,8 @@
  * https://adventofcode.com/2020/day/6
  * using PHP 7.2.24
  * by Zack Sargent
+ *
+ * Note: this is my first time using PHP.
  */
 
 function replace($s) 
@@ -19,6 +21,7 @@ function getInput()
 	$resource = fopen($filename, "r");
 	$input_file = fread($resource, filesize($filename));
 
+	$input_file = rtrim($input_file, "\n");
 	$raw_array = explode("\n\n", $input_file);
 
 	$formatted_array = array_map('replace', $raw_array);
