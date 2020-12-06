@@ -6,15 +6,13 @@
  * by Zack Sargent
  */
 
-function replace($s) 
-{
+function replace($s) {
 	return str_replace("\n","", $s);
 }
 
-function getInput() 
-{
-	$filename = "input.txt";
-	// $filename = "test_input.txt";
+function getInput() {
+	// $filename = "input.txt";
+	$filename = "test_input.txt";
 
 	$resource = fopen($filename, "r");
 	$input_file = fread($resource, filesize($filename));
@@ -27,26 +25,28 @@ function getInput()
 	return $formatted_array;
 }
 
-function getNumberOfQuestions($str) 
-{
-	$letters = str_split($str);
-	$answered = array();
-
-	foreach ($letters as $char) {
-		$answered[$char] = true;
-	}
-	return count($answered);
-}
-
 $input = getInput();
-$total = 0;
+$answered = array();
 
-foreach ($input as $value) {
-	$total += getNumberOfQuestions($value);
+function returnTrue() {
+	return true;
 }
 
-echo "Total questions:\n";
-echo $total , "\n";
+$alpha = range('a', 'z');
+$alpha = array_fill_keys($alpha, true);
 
-// too high : 6533
+foreach ($input as $form) {
+	foreach ($alpha as $char => $value) {
+		// If a char is not found in the form,
+		if (strpos($form, $char) === false) {
+			// mark it false
+			$alpha[$char] = false;
+		}
+	}
+}
+
+echo "Number of questions everone answered:\n";
+echo count(array_filter($alpha)), "\n";
+
+
 ?>

@@ -1,19 +1,24 @@
-abc
 
-a
-b
+abc
+oi
+
+oa
+oib
 c
 
-ab
+oiab
 ac
+o
 
 a
-a
+oia
 a
 a
 
+oia
 b
 
 abcx
 abcy
 abcz
+ooooooo
