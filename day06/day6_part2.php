@@ -24,20 +24,14 @@ function getInput()
 }
 
 function getNumberOfQuestionsEveryoneAnswered($group) {
-	// steps:
-	// 1) get number of forms in group.
-	// 2) for each character in each form, make sure the 
-	// number of occurences of that character is equal 
-	// to the number of people.
-	//
-	// use array for deduplication.
-
-
 	$people = explode("\n", $group);
 	$characters = str_split($group);
 
 	$questions = array();
 	
+	// for each character, make sure the number
+	// of occurences of that character is equal 
+	// to the number of people.
 	foreach($characters as $char) {
 		$occurences = substr_count($group, $char);	
 		if ($occurences == count($people)) {
@@ -45,6 +39,7 @@ function getNumberOfQuestionsEveryoneAnswered($group) {
 		}
 	}
 
+	// use array for deduplication
 	return count($questions);
 }
 
