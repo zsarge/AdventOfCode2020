@@ -30,6 +30,7 @@ namespace Day7 {
 		{
 			public string Name;
 			public string Contains;
+			
 			public Bag(string name, string contains)
 			{
 				Name = name;
@@ -53,10 +54,6 @@ namespace Day7 {
 			int end = rule.IndexOf("s contain");
 			Bag newBag = new Bag(rule.Substring(0, end), "none");
 
-			// Console.WriteLine("Create bag:");
-			// Console.WriteLine(newBag.Name);
-			// Console.WriteLine("");
-
 			return newBag;
 		}
 
@@ -75,17 +72,10 @@ namespace Day7 {
 				foreach (Capture capture in match.Captures)
 				{
 					var name = capture.Value;
-					Console.WriteLine($"Used bags = {usedBags}");
-					
 					Bag bag = CreateBagFromRule(name);
 					if (usedBags.IndexOf(bag.Name) == -1) {
-						// Console.WriteLine($"IndexOf = {usedBags.IndexOf(name)}");
-						// Console.WriteLine($"used '{name}'");
-						// AddBag(CreateBagFromRule(name));
 						AddBag(bag);
-					} else {
-						Console.WriteLine($"skipped {bag.Name}\n");
-					}
+					} 
 				}
 			}
 		}
@@ -99,18 +89,8 @@ namespace Day7 {
 
 
 			while (queue.Count > 1) {
-				// Console.WriteLine($"queue at count {queue.Count} ="); 
-				// foreach (var item in queue) 
-				// {
-					// Console.Write(" ");
-					// Console.Write(item.Name); 
-				// }
-				// Console.WriteLine(""); 
 				var index = queue.Count - 1;
-				// Console.WriteLine("Count = ");
-				// Console.WriteLine(queue.Count);
-				// Console.WriteLine(queue[index].Name);
-				// Console.WriteLine("");
+
 				// note: save all append calculations for last or save pos in memory
 				AddBagsContaining(queue[index].Name);
 				queue.RemoveAt(index);
