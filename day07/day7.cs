@@ -42,30 +42,34 @@ namespace Day7 {
 
 		public BaggageHandler() 
 		{
-			input = File.ReadAllText("input.txt");
-			// input = File.ReadAllText("test_input.txt");
+			// input = File.ReadAllText("input.txt");
+			input = File.ReadAllText("test_input.txt");
 		}
 
-		private void GetBagsContaining(string bagName) 
-		// private List<string> GetBagsContaining(string bagName) 
+		private Bag CreateBagFromRule(string rule) 
 		{
-			// var regex = new Regex(@"^.*contain [1-9] {bagName}.*$");
+			int end = rule.IndexOf(" contain");
+			Bag newBag = new Bag(rule.Substring(0, end), "none");
 
-			// regex.Matches(input)[0]
-			// foreach (Match match in regex.Matches(input))
-			// Console.WriteLine("Found '{0}' at position {1}", 
-			// match.Value, match.Index);
-			var regex = new Regex(@"^.*contain [1-9] shiny gold bags.*$", RegexOptions.Multiline);
-			// Regex regex = new Regex(@"bag", RegexOptions.Multiline);
-			Console.WriteLine("Ran:");
+			Console.WriteLine("Create bag:");
+			Console.WriteLine(newBag.Name);
+			Console.WriteLine("");
+
+			return newBag;
+		}
+
+
+		private void AddBagsContaining(string bagName) 
+		{
+			var regex = new Regex($"^.*contain.*[1-9] {bagName}.*$", RegexOptions.Multiline);
 			MatchCollection matches = regex.Matches(input);
-			// MatchCollection matches = regex.Matches(input, new Regex("^.*bag.*$", RegexOptions.Multiline));
 			foreach (Match match in matches)
 			{
 				foreach (Capture capture in match.Captures)
 				{
 					Console.WriteLine("Found:");
 					Console.WriteLine("Index={0}, Value={1}", capture.Index, capture.Value);
+					queue.Add(CreateBagFromRule(capture.Value));
 				}
 			}
 		}
@@ -74,16 +78,27 @@ namespace Day7 {
 		public List<Bag> GetNumberOfBagsWith(string bagName) 
 		{
 			queue.Add(new Bag(bagName, "no other bags"));
-			// Console.WriteLine(input);
 
-			GetBagsContaining(queue[0].Name);
+			AddBagsContaining(queue[0].Name);
 
-			Console.WriteLine("Count = ");
-			Console.WriteLine(queue.Count);
-			// while (queue.Count >= 1) {
-			// // note: save all append calculations for last or save pos in memory
 
-			// }
+			while (queue.Count > 1) {
+				Console.WriteLine($"queue at count {queue.Count} ="); 
+				foreach (var item in queue) 
+				{
+					Console.Write(" ");
+					Console.Write(item.Name); 
+				}
+				Console.WriteLine(""); 
+				var index = queue.Count - 1;
+				// Console.WriteLine("Count = ");
+				// Console.WriteLine(queue.Count);
+				// Console.WriteLine(queue[index].Name);
+				// Console.WriteLine("");
+				// note: save all append calculations for last or save pos in memory
+				AddBagsContaining(queue[index].Name);
+				queue.RemoveAt(index);
+			}
 			return queue;
 		}
 	}
