@@ -39,25 +39,32 @@ namespace Day7 {
 
 		private static string input;
 		private static List<Bag> queue = new List<Bag>();
+		private static double numberOfBags;
+		private static string usedBags = "";
 
 		public BaggageHandler() 
 		{
-			// input = File.ReadAllText("input.txt");
-			input = File.ReadAllText("test_input.txt");
+			input = File.ReadAllText("input.txt");
+			// input = File.ReadAllText("test_input.txt");
 		}
 
 		private Bag CreateBagFromRule(string rule) 
 		{
-			int end = rule.IndexOf(" contain");
+			int end = rule.IndexOf("s contain");
 			Bag newBag = new Bag(rule.Substring(0, end), "none");
 
-			Console.WriteLine("Create bag:");
-			Console.WriteLine(newBag.Name);
-			Console.WriteLine("");
+			// Console.WriteLine("Create bag:");
+			// Console.WriteLine(newBag.Name);
+			// Console.WriteLine("");
 
 			return newBag;
 		}
 
+		private void AddBag(Bag bag) {
+			queue.Add(bag);
+			numberOfBags++;
+			usedBags += $"{bag.Name}, ";
+		}
 
 		private void AddBagsContaining(string bagName) 
 		{
@@ -67,15 +74,24 @@ namespace Day7 {
 			{
 				foreach (Capture capture in match.Captures)
 				{
-					Console.WriteLine("Found:");
-					Console.WriteLine("Index={0}, Value={1}", capture.Index, capture.Value);
-					queue.Add(CreateBagFromRule(capture.Value));
+					var name = capture.Value;
+					Console.WriteLine($"Used bags = {usedBags}");
+					
+					Bag bag = CreateBagFromRule(name);
+					if (usedBags.IndexOf(bag.Name) == -1) {
+						// Console.WriteLine($"IndexOf = {usedBags.IndexOf(name)}");
+						// Console.WriteLine($"used '{name}'");
+						// AddBag(CreateBagFromRule(name));
+						AddBag(bag);
+					} else {
+						Console.WriteLine($"skipped {bag.Name}\n");
+					}
 				}
 			}
 		}
 
 		// Use list as queue to work through bags
-		public List<Bag> GetNumberOfBagsWith(string bagName) 
+		public double GetNumberOfBagsWith(string bagName) 
 		{
 			queue.Add(new Bag(bagName, "no other bags"));
 
@@ -83,13 +99,13 @@ namespace Day7 {
 
 
 			while (queue.Count > 1) {
-				Console.WriteLine($"queue at count {queue.Count} ="); 
-				foreach (var item in queue) 
-				{
-					Console.Write(" ");
-					Console.Write(item.Name); 
-				}
-				Console.WriteLine(""); 
+				// Console.WriteLine($"queue at count {queue.Count} ="); 
+				// foreach (var item in queue) 
+				// {
+					// Console.Write(" ");
+					// Console.Write(item.Name); 
+				// }
+				// Console.WriteLine(""); 
 				var index = queue.Count - 1;
 				// Console.WriteLine("Count = ");
 				// Console.WriteLine(queue.Count);
@@ -99,7 +115,7 @@ namespace Day7 {
 				AddBagsContaining(queue[index].Name);
 				queue.RemoveAt(index);
 			}
-			return queue;
+			return numberOfBags;
 		}
 	}
 
@@ -107,8 +123,8 @@ namespace Day7 {
 		// public static 
 		public static void Main() 
 		{
-			BaggageHandler John = new BaggageHandler();
-			Console.WriteLine(John.GetNumberOfBagsWith("shiny gold bag")[0].Name);
+			BaggageHandler handler = new BaggageHandler();
+			Console.WriteLine(handler.GetNumberOfBagsWith("shiny gold bag"));
 		}
 	}
 }

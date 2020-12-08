@@ -21,3 +21,7 @@ contain [1-9] shiny gold bag -> muted yellow bags, bright white bags
         contain [1-9] dark orange bags -> no results
         contain [1-9] light red bags -> no results
 
+
+241 is too low
+166 is too low
+265 is ?
