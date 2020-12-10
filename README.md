@@ -27,6 +27,8 @@ Click the language name for details on how to run the solutions. Click "Pt 1" fo
 | [5 (optimized)](https://adventofcode.com/2020/day/5) |                    [Pts 1 & 2](day05/day05_optimized/day05.go)                     | [Go](day05/day05_optimized/README.md)        | After realizing how bad my original solution was, I improved it in Go. Coming from Javascript, I was originally annoyed by Go not letting me leave variables unused, but I realize now that it actually prevented some errors I likely would have made in a less strict language. I also thought Go's implementation of strings would be more annoying, but I figured it out and it wasn't that bad. Go is also impressively fast. Overall, I am impressed with Go. |
 |       [6](https://adventofcode.com/2020/day/6)       |                [Pt 1](day06/day6.php), [Pt 2](day06/day6_part2.php)                | [PHP](day06/README.md)                       | This is my first time using PHP. I thought I would hate it more, but it's alright for short programs. Using `$` for variables isn't great, but isn't that bad. Being on a unix system might have improved my experience.                                                                                                                                                                                                                                            |
 
+**This project has been paused.** Due to exams and projects, I do not have the time to be working on this at the moment. Oh well.
+
 ---
 
 Out of all my solutions, I am most happy with Day 2, and Day 5 (optimized).
